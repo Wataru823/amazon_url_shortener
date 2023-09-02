@@ -8,14 +8,12 @@ function App() {
   const [notURL, setNotURL] = useState("");
 
   const convertURL = () => {
-    // AmazonのURLを検出
-    if (inputURL.includes("amazon.co.jp/dp/")) {
-      const regex = /\/dp\/(.*?)\?/;
+    if (inputURL.includes("amazon.co.jp") || inputURL.includes("amazon.jp")){
+      const regex = /(gp\/product|dp)\/(.*?)(\?|\/)/;
       const match = inputURL.match(regex);
-      if (match && match[1]) {
-        console.log(match[1]);
+      if (match) {
         setNotURL("");
-        setShortURL("https://amazon.co.jp/dp/" + match[1]); // この部分は固定のURLです。動的に変更する場合は、サービス等の利用が必要です。
+        setShortURL("https://amazon.jp/dp/" + match[2]);
       }
     } else if (inputURL == "") {
       setNotURL("入力欄を記入してください");
@@ -29,9 +27,12 @@ function App() {
 
   return (
     <>
-      <h1 className="my-7 md:text-3xl text-xl text-sky-500 font-medium">Amazon URL Shortener</h1>
-      <p className="my-3 text-sm">Amazonの商品URLを短縮することができます。</p>
-      <p className="mb-10 text-sm">入力情報は保存されません。</p>
+      <h1 className="my-7 md:text-3xl text-2xl text-sky-500 font-medium">Amazon URL Shortener</h1>
+      <p className="my-3 text-left text-sm">Amazonの商品URLを短縮することができます。</p>
+      <p className="mb-6 text-left text-sm">入力情報は保存されません。</p>
+      <p className="mb-10 text-left text-sm break-words overflow-hidden">
+          入力例：<a href="https://www.amazon.co.jp/gp/product/4122073707/ref=sr_1_9?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A" className="text-blue-500 hover:text-blue-700 underline">https://www.amazon.co.jp/gp/product/4122073707/ref=sr_1_9?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A</a>
+      </p>
 
       <div className="md:text-xl text-sm">
         <label className="">
