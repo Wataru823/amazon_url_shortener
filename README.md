@@ -34,4 +34,5 @@ AmazonのURLには "https://amzn.to/" から始まるものもあるが、こち
 
 ### 参考
 [1] [AmazonのURLには短縮機能がある。(amazonのドメインだけで短縮URLとしては十分）](https://takuya-1st.hatenablog.jp/entry/2013/12/24/005719)
+
 [2] [【Typescript】Reactでテキストをコピーするボタンを実装する](https://amateur-engineer-blog.com/copy-button-with-typescript-react/)
