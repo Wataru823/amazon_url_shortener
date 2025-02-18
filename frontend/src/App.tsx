@@ -8,18 +8,17 @@ function App() {
   const [notURL, setNotURL] = useState("");
 
   const convertURL = () => {
-    if (inputURL.includes("amazon.co.jp") || inputURL.includes("amazon.jp")){
+    if (inputURL.includes("amazon.co.jp") || inputURL.includes("amazon.jp")) {
       const regex = /(gp\/product|dp)\/(.*?)(\?|\/)/;
       const match = inputURL.match(regex);
       if (match) {
         setNotURL("");
-        setShortURL("https://amazon.jp/dp/" + match[2]);
+        setShortURL("https://amazon.jp/d/" + match[2]);
       }
     } else if (inputURL == "") {
       setNotURL("入力欄を記入してください");
       setShortURL("");
-    }
-    else {
+    } else {
       setNotURL("無効なURLです");
       setShortURL("");
     }
@@ -27,11 +26,21 @@ function App() {
 
   return (
     <>
-      <h1 className="my-7 md:text-3xl text-2xl text-sky-500 font-medium">Amazon URL Shortener</h1>
-      <p className="my-3 text-left text-sm">Amazonの商品URLを短縮することができます。</p>
+      <h1 className="my-7 md:text-3xl text-2xl text-sky-500 font-medium">
+        Amazon URL Shortener
+      </h1>
+      <p className="my-3 text-left text-sm">
+        Amazonの商品URLを短縮することができます。
+      </p>
       <p className="mb-6 text-left text-sm">入力情報は保存されません。</p>
       <p className="mb-10 text-left text-sm break-words overflow-hidden">
-          入力例：<a href="https://www.amazon.co.jp/gp/product/4122073707/ref=sr_1_9?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A" className="text-blue-500 hover:text-blue-700 underline">https://www.amazon.co.jp/gp/product/4122073707/ref=sr_1_9?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A</a>
+        入力例：
+        <a
+          href="https://www.amazon.co.jp/gp/product/4122073707/ref=sr_1_9?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A"
+          className="text-blue-500 hover:text-blue-700 underline"
+        >
+          https://www.amazon.co.jp/gp/product/4122073707/ref=sr_1_9?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A
+        </a>
       </p>
 
       <div className="md:text-xl text-sm">
@@ -49,12 +58,17 @@ function App() {
             name="search"
           />
         </label>
-        <button onClick={convertURL}
+        <button
+          onClick={convertURL}
           className="m-4 py-2 px-3 hover:-translate-y-0.5 transition motion-reduce:hover:translate-y-0 motion-reduce:transition-none bg-sky-400 text-white rounded-full text-sm"
-        >URLを短縮する！</button>
+        >
+          URLを短縮する！
+        </button>
         <p className="mt-5 mb-2 text-sm">{notURL}</p>
         <div className="relative flex justify-between w-auto p-4 bg-gray-100 rounded-lg">
-          <pre className="overflow-x-auto text-black py-2 text-sm">{shortURL}</pre>
+          <pre className="overflow-x-auto text-black py-2 text-sm">
+            {shortURL}
+          </pre>
           <CopyButton copyText={shortURL} />
         </div>
       </div>
