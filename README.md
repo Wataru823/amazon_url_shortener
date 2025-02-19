@@ -18,6 +18,18 @@ yarn
 yarn dev
 ```
 
+### デプロイ
+build
+```bash
+yarn build
+```
+
+確認方法
+```bash
+npm install -g serve
+serve -s dist
+```
+
 ### アルゴリズム
 
 参考[[2]](https://takuya-1st.hatenablog.jp/entry/2013/12/24/005719) をもとに数パターンに対応しました。
